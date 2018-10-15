@@ -1,0 +1,19 @@
+{
+  "name": "email-handler",
+  "version": "1.0.0",
+  "description": "Handles the contact form on my portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibrahimpg/email-handler.git"
+  },
+  "author": "Ibrahim P.G.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ibrahimpg/email-handler/issues"
+  },
+  "homepage": "https://github.com/ibrahimpg/email-handler#readme"
+}
