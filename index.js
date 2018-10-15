@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.post('/message', (req, res) => {
   const transporter = nodemailer.createTransport({
-    host: 'my host',
+    host: 'ibrahimpg.com',
     port: 465,
     secure: true,
     auth: {
