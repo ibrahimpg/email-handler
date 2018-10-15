@@ -13,7 +13,7 @@ app.post('/message', (req, res) => {
     secure: false,
     auth: {
       user: 'test@ibrahimpg.com',
-      pass: 'SpookyBoi',
+      pass: process.env.EMAIL_PW,
     },
     tls: {
       rejectUnauthorized: false,
