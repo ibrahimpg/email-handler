@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ibrahimpg/email-handler/issues"
   },
-  "homepage": "https://github.com/ibrahimpg/email-handler#readme"
+  "homepage": "https://github.com/ibrahimpg/email-handler#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemailer": "^4.6.8"
+  }
 }
