@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/ibrahimpg/email-handler#readme",
   "dependencies": {
-    "express": "^4.16.4",
-    "nodemailer": "^4.6.8"
+    "express": "4.16.4",
+    "nodemailer": "4.6.8"
   },
   "devDependencies": {
     "eslint": "^5.7.0",

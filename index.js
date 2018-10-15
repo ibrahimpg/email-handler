@@ -3,33 +3,39 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.post('/message', (req, res) => {
   const transporter = nodemailer.createTransport({
-    host: 'ibrahimpg.com',
-    port: 465,
-    secure: true,
+    host: 'mail.ibrahimpg.com',
+    port: 587,
+    secure: false,
     auth: {
       user: 'test@ibrahimpg.com',
-      pass: process.env.EMAIL_PW,
+      pass: 'SpookyBoi',
+    },
+    tls: {
+      rejectUnauthorized: false,
     },
   });
   const mailOptions = {
-    from: '"Ibrahim" test@ibrahimpg.com',
-    to: req.body.email,
-    subject: 'Automatic reply from Ibrahim PG',
+    from: '"Ibrahim P.G." <test@ibrahimpg.com>',
+    to: `${req.body.email}, ipaboughalioum@alaska.edu`,
+    subject: 'Node Contact Request',
     html: `
-      <b>${req.body.name}</b><br><br>
-      <p>I have received your message and will get back to you as soon as possible. Thank you for your interest!</p>
-    `,
+    <div style="width:100%; height:100%; background-color: #666; color: rgba(255, 255, 255, 0.9); padding: 10px;">
+      <h1>${req.body.name}</h1>
+      <p>I have received your message and will get back to you ASAP. Thank you for your interest!</p>
+      <hr>
+      <p style="padding-left:25px;">${req.body.message}</p>
+    </div>`,
   };
-  transporter.sendMail(mailOptions, (error, info) => {
+  transporter.sendMail(mailOptions, (error) => {
     if (error) {
-      return;
+      return res.sendStatus(500);
     }
-    res.json({ message: `Message sent: %s', ${info.messageId}` });
+    return res.json({ message: 'Message sent!' });
   });
 });
 
