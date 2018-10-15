@@ -6,27 +6,16 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const transporter = nodemailer.createTransport({
-  host: 'my host',
-  port: 465,
-  secure: true,
-  auth: {
-    user: 'test@ibrahimpg.com',
-    pass: process.env.EMAIL_PW,
-  },
-});
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // 'https://ibrahimpg.com'
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'POST');
-    res.status(200).json({});
-  }
-  next();
-});
-
 app.post('/message', (req, res) => {
+  const transporter = nodemailer.createTransport({
+    host: 'my host',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'test@ibrahimpg.com',
+      pass: process.env.EMAIL_PW,
+    },
+  });
   const mailOptions = {
     from: '"Ibrahim" test@ibrahimpg.com',
     to: req.body.email,
@@ -42,17 +31,6 @@ app.post('/message', (req, res) => {
     }
     res.json({ message: `Message sent: %s', ${info.messageId}` });
   });
-});
-
-app.use((req, res, next) => {
-  const error = new Error('Route not available.');
-  error.status = 404;
-  next(error);
-});
-
-app.use((error, req, res) => {
-  res.status(error.status || 500);
-  res.json({ error: { message: error.message } });
 });
 
 const port = process.env.PORT || 8080;
