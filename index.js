@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/', (req, res) => {
+app.post('/message', (req, res) => {
   const mailOptions = {
     from: '"Ibrahim" test@ibrahimpg.com',
     to: req.body.email,
