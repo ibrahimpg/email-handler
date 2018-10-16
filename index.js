@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PW },
   });
   transporter.sendMail({
-    from: `${process.env.EMAIL_NAME} <${process.env.EMAIL_USER}>`,
+    from: '"Ibrahim P.G." <ibrahim@ibrahimpg.com>',
     bcc: `${req.body.email}, ${process.env.EMAIL_USER}`,
     subject: `Automatic reply from ${process.env.EMAIL_NAME}`,
     text: `${req.body.name},
