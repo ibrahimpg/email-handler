@@ -22,7 +22,7 @@ app.post('/', (req, res) => {
   transporter.sendMail({
     from: '"Ibrahim P.G." <ibrahim@ibrahimpg.com>',
     bcc: `${req.body.email}, ibrahim@ibrahimpg.com`,
-    subject: `Automatic reply from ${process.env.EMAIL_NAME}`,
+    subject: 'Automatic reply from Ibrahim P.G.',
     text: `${req.body.name},
     I have received your message and will get back to you as soon as possible.
     Thank you for your interest!
