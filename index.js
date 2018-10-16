@@ -26,9 +26,11 @@ app.post('/', (req, res) => {
     from: '"Ibrahim P.G." <ibrahim@ibrahimpg.com>',
     bcc: `${req.body.email}, ibrahim@ibrahimpg.com`,
     subject: 'Automatic reply from Ibrahim P.G.',
-    text: `${req.body.name},
+    text:
+    `${req.body.name},
     I have received your message and will get back to you as soon as possible.
     Thank you for your interest!
+    
     ${req.body.message}
     ${req.body.email}`,
   })
