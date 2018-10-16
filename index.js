@@ -33,14 +33,12 @@ app.post('/message', (req, res) => {
       <br>${req.body.email}</p>
     </div>`,
   };
-  transporter.sendMail(mailOptions,
-  // , (error) => {
-  //   if (error) {
-  //     return res.sendStatus(500);
-  //   }
-  //   return res.end;
-  // }
-  );
+  transporter.sendMail(mailOptions, (error) => {
+    if (error) {
+      return res.sendStatus(500);
+    }
+    return res.end();
+  });
 });
 
 const port = process.env.PORT || 8080;
