@@ -14,16 +14,16 @@ app.use((req, res, next) => {
 
 app.post('/', (req, res) => {
   const transporter = nodemailer.createTransport({
-    host: 'mail.ibrahimpg.com',
+    host: process.env.EMAIL_HOST,
     port: 26,
     secure: false,
-    auth: { user: 'ibrahim@ibrahimpg.com', pass: process.env.EMAIL_PW },
+    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PW },
     tls: { rejectUnauthorized: false },
   });
   transporter.sendMail({
-    from: '"Ibrahim P.G." <ibrahim@ibrahimpg.com>',
-    to: `${req.body.email}, ibrahim@ibrahimpg.com`,
-    subject: 'Automatic reply from Ibrahim P.G.',
+    from: `"${process.env.EMAIL_NAME}" <${process.env.EMAIL_USER}>`,
+    bcc: `${req.body.email}, ${process.env.EMAIL_USER}`,
+    subject: `Automatic reply from ${process.env.EMAIL_NAME}`,
     text: `${req.body.name}, I have received your message and will get back to you as soon as possible. Thank you for your interest!
       ${req.body.message}
       ${req.body.email}`,
