@@ -22,23 +22,13 @@ app.post('/message', (req, res) => {
   const mailOptions = {
     from: '"Ibrahim P.G." <ibrahim@ibrahimpg.com>',
     to: `${req.body.email}, ibrahim@ibrahimpg.com`,
-    subject: 'Hey there!',
-    html: `
-    <div style="width:100%; height:100%; background-color: #666; padding: 10px;">
-      <p style="color: rgba(255, 255, 255, 0.9);">${req.body.name},</p>
-      <p style="color: rgba(255, 255, 255, 0.9);">I have received your message and will get back to you ASAP.
-      Thank you for your interest!</p>
-      <hr>
-      <p style="color: rgba(255, 255, 255, 0.9); padding:25px;">${req.body.message}
-      <br>${req.body.email}</p>
-    </div>`,
+    subject: 'Automatic reply from Ibrahim P.G.',
+    text: `${req.body.name}, I have received your message and will get back to you as soon as possible.
+    Thank you for your interest!
+      ${req.body.message}
+      ${req.body.email}`,
   };
-  transporter.sendMail(mailOptions, (error) => {
-    if (error) {
-      return res.sendStatus(500);
-    }
-    return res.sendStatus(200);
-  });
+  transporter.sendMail(mailOptions).then(res.status(200)).catch(res.status(500));
 });
 
 const port = process.env.PORT || 8080;
