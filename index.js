@@ -38,8 +38,8 @@ app.post('/', (req, res) => {
       ${req.body.email}`,
   };
   transporter.sendMail(mailOptions)
-    .then(res.status(200))
-    .catch(res.status(500));
+    .then(res.status(200).json({ msg: 'fuck you' }))
+    .catch(res.status(500).json({ msg: 'fuck you' }));
 });
 
 app.use((req, res, next) => {
