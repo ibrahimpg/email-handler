@@ -6,16 +6,6 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   if (req.method === 'OPTIONS') {
-//     res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
-//     res.status(200).json({});
-//   }
-//   next();
-// });
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -27,23 +17,17 @@ app.post('/', (req, res) => {
     host: 'mail.ibrahimpg.com',
     port: 26,
     secure: false,
-    auth: {
-      user: 'ibrahim@ibrahimpg.com',
-      pass: process.env.EMAIL_PW,
-    },
-    tls: {
-      rejectUnauthorized: false,
-    },
+    auth: { user: 'ibrahim@ibrahimpg.com', pass: process.env.EMAIL_PW },
+    tls: { rejectUnauthorized: false },
   });
-  const mailOptions = {
+  transporter.sendMail({
     from: '"Ibrahim P.G." <ibrahim@ibrahimpg.com>',
     to: `${req.body.email}, ibrahim@ibrahimpg.com`,
     subject: 'Automatic reply from Ibrahim P.G.',
     text: `${req.body.name}, I have received your message and will get back to you as soon as possible. Thank you for your interest!
       ${req.body.message}
       ${req.body.email}`,
-  };
-  transporter.sendMail(mailOptions)
+  })
     .then(res.status(200).json({ msg: 'fuck you' }))
     .catch(res.status(500).json({ msg: 'fuck you' }));
 });
