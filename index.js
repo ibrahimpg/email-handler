@@ -18,20 +18,20 @@ app.post('/', (req, res) => {
     port: 26,
     secure: false,
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PW },
-    tls: { rejectUnauthorized: false },
   });
   transporter.sendMail({
     from: `"${process.env.EMAIL_NAME}" <${process.env.EMAIL_USER}>`,
     bcc: `${req.body.email}, ${process.env.EMAIL_USER}`,
     subject: `Automatic reply from ${process.env.EMAIL_NAME}`,
-    text: `${req.body.name}, I have received your message and will get back to you as soon as possible. Thank you for your interest!
-      ${req.body.message}
-      ${req.body.email}`,
+    text: `${req.body.name},
+    I have received your message and will get back to you as soon as possible.
+    Thank you for your interest!
+    "${req.body.message}"
+    ${req.body.email}`,
   })
-    .then(res.status(200).json({ msg: 'fuck you' }))
-    .catch(res.status(500).json({ msg: 'fuck you' }));
+    .then(res.status(200).json({ msg: 'Sent!' }))
+    .catch(res.status(500).json({ msg: 'Error!' }));
 });
 
 const port = process.env.PORT || 8080;
-
 app.listen(port);
