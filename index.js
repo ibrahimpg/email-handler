@@ -17,7 +17,7 @@ app.post('/', (req, res) => {
     host: 'mail.ibrahimpg.com',
     port: 26,
     secure: false,
-    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PW },
+    auth: { user: 'ibrahim@ibrahimpg.com', pass: process.env.EMAIL_PW },
   });
   transporter.sendMail({
     from: '"Ibrahim P.G." <ibrahim@ibrahimpg.com>',
