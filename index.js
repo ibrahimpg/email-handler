@@ -37,7 +37,7 @@ app.post('/message', (req, res) => {
     if (error) {
       return res.sendStatus(500);
     }
-    return res.end();
+    return res.sendStatus(200);
   });
 });
 
