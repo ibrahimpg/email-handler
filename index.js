@@ -6,13 +6,19 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   if (req.method === 'OPTIONS') {
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+//     res.status(200).json({});
+//   }
+//   next();
+// });
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
-    res.status(200).json({});
-  }
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -40,17 +46,6 @@ app.post('/', (req, res) => {
   transporter.sendMail(mailOptions)
     .then(res.status(200).json({ msg: 'fuck you' }))
     .catch(res.status(500).json({ msg: 'fuck you' }));
-});
-
-app.use((req, res, next) => {
-  const error = new Error('Route not available.');
-  error.status = 404;
-  next(error);
-});
-
-app.use((error, req, res) => {
-  res.status(error.status || 500);
-  res.json({ error: { message: error.message } });
 });
 
 const port = process.env.PORT || 8080;
