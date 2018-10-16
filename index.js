@@ -12,7 +12,7 @@ app.all((req, res, next) => {
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.post('/message', (req, res) => {
+app.post('/', (req, res) => {
   const transporter = nodemailer.createTransport({
     host: 'mail.ibrahimpg.com',
     port: 26,
