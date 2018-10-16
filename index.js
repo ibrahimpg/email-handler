@@ -34,8 +34,8 @@ app.post('/message', (req, res) => {
       ${req.body.email}`,
   };
   transporter.sendMail(mailOptions)
-    .then(res.status(200).end())
-    .catch(res.status(500).end());
+    .then(res.status(200))
+    .catch(res.status(500));
 });
 
 const port = process.env.PORT || 8080;
