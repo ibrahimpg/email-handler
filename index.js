@@ -40,7 +40,7 @@ app.post('/message', (req, res) => {
     if (error) {
       return res.sendStatus(500);
     }
-    return res.json({ message: 'Message sent!' });
+    return res.json({ message: 'Message sent successfully!' });
   });
 });
 
