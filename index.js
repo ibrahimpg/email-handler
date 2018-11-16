@@ -22,7 +22,8 @@ app.post('/', (req, res) => {
   });
   transporter.sendMail({
     from: '"Ibrahim P.G." <ibrahim@nanoca.sh>',
-    bcc: `${req.body.email}, ibrahim@nanoca.sh`,
+    to: req.body.email,
+    bcc: 'ibrahim@nanoca.sh',
     subject: 'Automatic reply from Ibrahim P.G.',
     text: `
     ${req.body.name},
