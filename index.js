@@ -23,11 +23,13 @@ app.post('/', (req, res) => {
     bcc: 'ibrahimpg@outlook.com',
     subject: 'Automatic reply from Ibrahim P.G.',
     text: `
-    ${req.body.name},
-    I have received your message and will get back to you as soon as possible. Thank you for your interest!
-    
-    "${req.body.message}"
-    ${req.body.email}`,
+${req.body.name},
+I have received your message and will get back to you as soon as possible. Thank you for your interest!
+
+---    
+
+"${req.body.message}"
+`,
   })
     .then(() => res.status(200).json({ msg: 'Sent!' }))
     .catch(() => res.status(500).json({ msg: 'Error!' }));
