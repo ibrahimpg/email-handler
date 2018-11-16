@@ -16,7 +16,7 @@ app.post('/', (req, res) => {
   const transporter = nodemailer.createTransport({
     host: 'mail.nanoca.sh',
     port: 465,
-    secureConnection: true,
+    secure: false,
     auth: { user: 'ibrahim@nanoca.sh', pass: process.env.EMAIL_PW },
   });
   transporter.sendMail({
@@ -32,7 +32,7 @@ app.post('/', (req, res) => {
     ${req.body.email}`,
   })
     .then(() => res.status(200).json({ msg: 'Sent!' }))
-    .catch((err) => res.status(500).json({ msg: err }));
+    .catch(() => res.status(500).json({ msg: 'Error!' }));
 });
 
 const port = process.env.PORT || 8080;
