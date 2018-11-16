@@ -3,7 +3,6 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -20,7 +19,6 @@ app.post('/', (req, res) => {
   transporter.sendMail({
     from: '"Ibrahim P.G." <ibrahimpg@outlook.com>',
     to: req.body.email,
-    bcc: 'ibrahimpg@outlook.com',
     subject: 'Automatic reply from Ibrahim P.G.',
     text: `
 ${req.body.name},
