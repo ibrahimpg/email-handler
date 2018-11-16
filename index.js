@@ -14,16 +14,13 @@ app.use((req, res, next) => {
 
 app.post('/', (req, res) => {
   const transporter = nodemailer.createTransport({
-    host: 'mail.nanoca.sh',
-    port: 26,
-    secure: false,
-    auth: { user: 'ibrahim@nanoca.sh', pass: process.env.EMAIL_PW },
-    tls: { rejectUnauthorized: false },
+    service: 'Outlook365',
+    auth: { user: 'ibrahimpg@outlook.com', pass: process.env.EMAIL_PW },
   });
   transporter.sendMail({
-    from: '"Ibrahim P.G." <ibrahim@nanoca.sh>',
+    from: '"Ibrahim P.G." <ibrahimpg@outlook.com>',
     to: req.body.email,
-    bcc: 'ibrahim@nanoca.sh',
+    bcc: 'ibrahimpg@outlook.com',
     subject: 'Automatic reply from Ibrahim P.G.',
     text: `
     ${req.body.name},
