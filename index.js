@@ -16,6 +16,7 @@ app.post('/', (req, res) => {
   const transporter = nodemailer.createTransport({
     host: 'mail.nanoca.sh',
     port: 465,
+    secureConnection: true,
     auth: { user: 'ibrahim@nanoca.sh', pass: process.env.EMAIL_PW },
   });
   transporter.sendMail({
