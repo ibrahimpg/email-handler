@@ -31,8 +31,8 @@ app.post('/', (req, res) => {
     "${req.body.message}"
     ${req.body.email}`,
   })
-    .then(res.status(200).json({ msg: 'Sent!' }))
-    .catch(res.status(500).json({ msg: 'Error!' }));
+    .then(() => res.status(200).json({ msg: 'Sent!' }))
+    .catch(() => res.status(500).json({ msg: 'Error!' }));
 });
 
 const port = process.env.PORT || 8080;
