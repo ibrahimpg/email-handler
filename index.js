@@ -25,7 +25,6 @@ ${req.body.name},
 I have received your message and will get back to you as soon as possible. Thank you for your interest!
 
 ---    
-
 "${req.body.message}"
 `,
   })
