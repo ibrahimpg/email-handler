@@ -1,7 +1,7 @@
 {
   "name": "email-handler",
   "version": "1.0.0",
-  "description": "Handles the contact form on my portfolio website",
+  "description": "Handles the contact form on my website",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ibrahimpg/email-handler#readme",
   "dependencies": {
+    "cors": "2.8.5",
     "express": "4.16.4",
     "nodemailer": "4.6.8"
   },
